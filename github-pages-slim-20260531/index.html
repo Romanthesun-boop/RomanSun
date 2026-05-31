@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Симуляция управления конфликтами</title>
+    <link rel="stylesheet" href="./styles.css?v=76" />
+  </head>
+  <body>
+    <main class="game-shell">
+      <section class="game-screen">
+        <header class="topbar">
+          <button id="menuBtn" class="icon-button" type="button" aria-label="Входящие">
+            <span class="ui-icon icon-inbox" aria-hidden="true">
+              <svg viewBox="0 0 24 24" focusable="false">
+                <path d="M4 7h16v12H4z"></path>
+                <path d="m4 8 8 6 8-6"></path>
+                <path d="m4 19 6-6"></path>
+                <path d="m20 19-6-6"></path>
+              </svg>
+            </span>
+          </button>
+          <strong id="sectionName">Старт</strong>
+          <div id="topMetrics" class="top-metrics"></div>
+        </header>
+
+        <section id="view" class="view" aria-live="polite"></section>
+      </section>
+    </main>
+
+    <dialog id="theoryDialog">
+      <article>
+        <p class="label">Материал для разбора</p>
+        <h2 id="theoryTitle"></h2>
+        <p id="theoryGoal"></p>
+        <div id="theoryBody" class="theory-body"></div>
+        <button id="closeTheoryBtn" type="button">Вернуться к разбору</button>
+      </article>
+    </dialog>
+
+    <script src="./data/game-data.js?v=47"></script>
+    <script src="./app.js?v=76"></script>
+  </body>
+</html>
