@@ -1,5 +1,5 @@
 <!doctype html>
-    <!-- Public build: v103, 2026-06-13 -->
+    <!-- Public build: v104, 2026-06-13 -->
 <html lang="ru">
   <head>
     <meta charset="UTF-8" />
@@ -6880,6 +6880,20 @@ if (window.GAME_DATA) {
       (() => {
         const reveal = document.querySelector("#logoReveal");
         if (!reveal) return;
+        const revealImage = reveal.querySelector("img");
+        const revealSource = reveal.querySelector("source");
+        const freezeReveal = () => {
+          if (!revealImage || reveal.classList.contains("is-frozen")) return;
+          revealSource?.remove();
+          revealImage.src = "github-pages-slim-20260531/assets/brand/kredo-lidera-lockup.png?v=104";
+          reveal.classList.add("is-frozen");
+        };
+        const startFreezeTimer = () => window.setTimeout(freezeReveal, 7450);
+        if (revealImage?.complete) {
+          startFreezeTimer();
+        } else {
+          revealImage?.addEventListener("load", startFreezeTimer, { once: true });
+        }
         const closeReveal = () => {
           if (reveal.classList.contains("is-leaving")) return;
           reveal.classList.add("is-leaving");
