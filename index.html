@@ -1,5 +1,5 @@
 <!doctype html>
-    <!-- Public build: v109, 2026-06-13 -->
+    <!-- Public build: v110, 2026-06-13 -->
 <html lang="ru">
   <head>
     <meta charset="UTF-8" />
@@ -6451,7 +6451,7 @@ function showMapStageTheory() {
     ${renderTheoryList("Что важно понять сейчас", item.important)}
     ${renderTheoryList("Как применить к кейсу", item.examples)}
   `;
-  theoryDialog.showModal();
+  if (!theoryDialog.open) theoryDialog.showModal();
 }
 
 function showTheoryDetail(index = 0) {
@@ -6528,7 +6528,7 @@ function showMetricInfo(key) {
     ${renderTheoryList("Что это значит", item.meaning || [])}
     ${renderTheoryList("Как читать показатель", [riskNote])}
   `;
-  theoryDialog.showModal();
+  if (!theoryDialog.open) theoryDialog.showModal();
 }
 
 function showKpiPanel() {
@@ -6798,6 +6798,10 @@ document.querySelector("#closeTheoryBtn").addEventListener("click", () => theory
 theoryDialog.addEventListener("click", (event) => {
   const button = event.target.closest("button");
   if (!button) return;
+  if (button.dataset.metricInfo) {
+    showMetricInfo(button.dataset.metricInfo);
+    return;
+  }
   if (button.dataset.theoryOpen) {
     showTheoryDetail(Number(button.dataset.theoryOpen));
     return;
