@@ -1,5 +1,5 @@
 <!doctype html>
-    <!-- Public build: v104, 2026-06-13 -->
+    <!-- Public build: v105, 2026-06-13 -->
 <html lang="ru">
   <head>
     <meta charset="UTF-8" />
@@ -6885,15 +6885,10 @@ if (window.GAME_DATA) {
         const freezeReveal = () => {
           if (!revealImage || reveal.classList.contains("is-frozen")) return;
           revealSource?.remove();
-          revealImage.src = "github-pages-slim-20260531/assets/brand/kredo-lidera-lockup.png?v=104";
+          revealImage.src = "github-pages-slim-20260531/assets/brand/kredo-lidera-lockup.png?v=105";
           reveal.classList.add("is-frozen");
         };
-        const startFreezeTimer = () => window.setTimeout(freezeReveal, 7450);
-        if (revealImage?.complete) {
-          startFreezeTimer();
-        } else {
-          revealImage?.addEventListener("load", startFreezeTimer, { once: true });
-        }
+        window.setTimeout(freezeReveal, 7450);
         const closeReveal = () => {
           if (reveal.classList.contains("is-leaving")) return;
           reveal.classList.add("is-leaving");
